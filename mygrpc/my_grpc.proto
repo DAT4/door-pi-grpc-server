@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+option go_package = "github.com/dat4/grpc-test/mygrpc";
+option java_multiple_files = true;
+option java_package = "io.grpc.examples.routeguide";
+option java_outer_classname = "RouteGuideProto";
+
+package mygrpc;
+
+service DoorService {
+  rpc Login(User) returns (Token) {}
+  rpc OpenDoor(stream Door) returns (DoorResponse) {}
+}
+
+message Door {
+  string open = 1;
+}
+
+message User {
+  string username = 1;
+  string password = 2;
+}
+
+message Token {
+  string token = 1;
+}
+
+message DoorResponse {
+  string ok = 1;
+}
